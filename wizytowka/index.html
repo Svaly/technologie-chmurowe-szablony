@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Jeśli nie chcesz, żeby Google znalazł Twoją stronę, zostaw poniższą linię. Jeśli chcesz, usuń ją. -->
+  <meta name="robots" content="noindex">
+  <title>Imię Nazwisko · wizytówka</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1d2433;
+      --muted: #5b6475;
+      --accent: #1f4fd8;
+      --card: #f3f5f9;
+      --line: #e2e6ee;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #12151c;
+        --text: #e8ebf2;
+        --muted: #a2a9b8;
+        --accent: #7aa2ff;
+        --card: #1b2029;
+        --line: #2a303b;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      z-index: 10;
+    }
+    nav .wrap {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      height: 56px;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover { color: var(--accent); }
+    nav .logo { margin-right: auto; }
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+    h1 { font-size: 2.4rem; margin: 0 0 8px; }
+    h2 { font-size: 1.6rem; margin: 0 0 24px; }
+    h3 { margin: 0 0 6px; }
+    .lead { font-size: 1.2rem; color: var(--muted); margin: 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card p { margin: 0; color: var(--muted); }
+    .post {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .post time { color: var(--muted); font-size: 0.9rem; }
+    .post p { margin: 12px 0 0; }
+    .post img {
+      display: block;
+      max-width: 100%;
+      margin-top: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    footer { padding: 32px 0; color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 520px) {
+      h1 { font-size: 1.9rem; }
+      nav .wrap { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="#o-mnie">Imię Nazwisko</a>
+      <a href="#projekty">Projekty</a>
+      <a href="#blog">Blog</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <!-- ========== O MNIE: zmień teksty na swoje ========== -->
+    <section id="o-mnie">
+      <h1>Cześć, jestem Imię</h1>
+      <p class="lead">Studiuję gospodarkę cyfrową na Uniwersytecie Ekonomicznym w Katowicach.</p>
+      <p>Napisz tu 2–3 zdania o sobie: czym się zajmujesz, gdzie pracujesz, co Cię interesuje.</p>
+    </section>
+
+    <!-- ========== PROJEKTY: zmień, dodaj albo usuń karty ========== -->
+    <section id="projekty">
+      <h2>Projekty</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Nazwa projektu 1</h3>
+          <p>Jedno, dwa zdania: co zrobiłeś i jaki był efekt.</p>
+        </div>
+        <div class="card">
+          <h3>Nazwa projektu 2</h3>
+          <p>Projekt ze studiów, z pracy albo z hobby.</p>
+        </div>
+        <div class="card">
+          <h3>Nazwa projektu 3</h3>
+          <p>Liczby działają najlepiej: ile, jak szybko, dla kogo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BLOG: wpisy dodajesz w tablicy posts na dole pliku ========== -->
+    <section id="blog">
+      <h2>Blog</h2>
+      <div id="posts"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Strona hostowana w chmurze.</div>
+  </footer>
+
+  <script>
+    // =====================================================================
+    // WPISY NA BLOGU
+    // Każdy wpis to jeden obiekt { data, tytul, tresc, obraz }.
+    // - data:  w formacie RRRR-MM-DD, wpisy same ułożą się od najnowszego
+    // - tresc: akapity oddzielaj pustą linią (\n\n)
+    // - obraz: nazwa pliku zrzutu ekranu w tym samym folderze (albo "" jeśli brak)
+    // Nowy wpis: skopiuj cały obiekt, wklej po przecinku i zmień treść.
+    // =====================================================================
+    const posts = [
+      {
+        data: "2026-10-04",
+        tytul: "Zajęcia 1: wizytówka w chmurze",
+        tresc: "Co zrobiłem: opisz własnymi słowami, w 2–3 zdaniach.\n\nIle to trwało: od założenia konta do publikacji strony minęło X minut.\n\nCo nie zadziałało: opisz, co poszło nie tak za pierwszym razem i jak to naprawiłeś.",
+        obraz: "zajecia1.png"
+      }
+    ];
+
+    // Poniżej nic nie musisz zmieniać.
+    const container = document.getElementById("posts");
+    posts
+      .slice()
+      .sort((a, b) => b.data.localeCompare(a.data))
+      .forEach((post) => {
+        const article = document.createElement("article");
+        article.className = "post";
+
+        const time = document.createElement("time");
+        time.textContent = post.data;
+        article.appendChild(time);
+
+        const h3 = document.createElement("h3");
+        h3.textContent = post.tytul;
+        article.appendChild(h3);
+
+        post.tresc.split(/\n\s*\n/).forEach((paragraph) => {
+          const p = document.createElement("p");
+          p.textContent = paragraph.trim();
+          article.appendChild(p);
+        });
+
+        if (post.obraz) {
+          const img = document.createElement("img");
+          img.src = post.obraz;
+          img.alt = "Zrzut ekranu: " + post.tytul;
+          img.onerror = () => img.remove();
+          article.appendChild(img);
+        }
+
+        container.appendChild(article);
+      });
+  </script>
+</body>
+</html>
