@@ -14,7 +14,8 @@ Możesz z niej skorzystać zamiast generować stronę z AI albo potraktować ją
 2. Otwórz plik w Notatniku i zmień teksty w sekcjach **O mnie** i **Projekty** na swoje.
 3. Wpisy na blogu dodajesz w tablicy `posts` na dole pliku. Instrukcja jest w komentarzu nad tablicą.
 4. Zrzut ekranu do wpisu zapisz w tym samym folderze (np. `zajecia1.png`) i wpisz jego nazwę w polu `obraz`.
-5. Sprawdź stronę lokalnie (dwuklik na `index.html`), a potem wgraj **cały folder** na Cloudflare Pages według instrukcji z Classroom.
+5. Sprawdź stronę lokalnie (dwuklik na `index.html`), a potem wgraj **cały folder** na Cloudflare (Workers & Pages → Create application → Upload your static files) według instrukcji z Classroom.
+6. Każdy nowy wpis to nowa wersja strony: w Cloudflare wybierz **New deployment** i wgraj cały folder jeszcze raz.
 
 ### Prywatność
 
