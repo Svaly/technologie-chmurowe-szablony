@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Jeśli nie chcesz, żeby Google znalazł Twoją stronę, zostaw poniższą linię. Jeśli chcesz, usuń ją. -->
+  <meta name="robots" content="noindex">
+  <title>Imię Nazwisko · wizytówka</title>
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --side: #f1ebe1;
+      --text: #2b2622;
+      --muted: #6f655c;
+      --accent: #b5532f;
+      --line: #e4dccf;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: var(--accent); }
+
+    .layout { display: grid; grid-template-columns: 300px 1fr; min-height: 100vh; }
+
+    aside {
+      background: var(--side);
+      border-right: 1px solid var(--line);
+      padding: 48px 32px;
+    }
+    aside .inner { position: sticky; top: 48px; }
+    .avatar {
+      width: 88px; height: 88px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: bold; margin-bottom: 20px;
+    }
+    aside h1 { font-size: 1.5rem; margin: 0 0 6px; line-height: 1.3; }
+    aside .role { color: var(--muted); font-size: 0.9rem; margin: 0 0 28px; }
+    aside nav a {
+      display: block; padding: 8px 0; color: var(--text); text-decoration: none;
+      border-bottom: 1px solid var(--line); font-size: 0.95rem;
+    }
+    aside nav a:hover { color: var(--accent); padding-left: 6px; transition: padding 0.15s; }
+
+    main { padding: 48px 56px; max-width: 760px; }
+    section { padding: 0 0 48px; margin-bottom: 48px; border-bottom: 1px solid var(--line); }
+    section:last-child { border-bottom: none; }
+    h2 {
+      font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin: 0 0 20px;
+    }
+    .lead { font-size: 1.25rem; margin: 0 0 14px; }
+    p { margin: 0 0 12px; }
+
+    .project { padding: 16px 0; border-bottom: 1px dashed var(--line); }
+    .project:last-child { border-bottom: none; }
+    .project h3 { margin: 0 0 4px; font-size: 1.05rem; }
+    .project p { margin: 0; color: var(--muted); }
+
+    .post { padding: 0 0 28px; margin-bottom: 28px; border-bottom: 1px dashed var(--line); }
+    .post:last-child { border-bottom: none; }
+    .post time { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .post h3 { margin: 4px 0 0; font-size: 1.2rem; }
+    .post p { margin: 12px 0 0; }
+    .post img { display: block; max-width: 100%; margin-top: 16px; border: 1px solid var(--line); }
+
+    footer { color: var(--muted); font-size: 0.85rem; }
+
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { border-right: none; border-bottom: 1px solid var(--line); padding: 32px 20px; }
+      aside .inner { position: static; }
+      aside nav { display: flex; gap: 18px; }
+      aside nav a { border-bottom: none; padding: 0; }
+      main { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <!-- ========== PANEL BOCZNY: zmień inicjały, imię i opis ========== -->
+    <aside>
+      <div class="inner">
+        <div class="avatar">IN</div>
+        <h1>Imię Nazwisko</h1>
+        <p class="role">Gospodarka cyfrowa · UE Katowice</p>
+        <nav>
+          <a href="#o-mnie">O mnie</a>
+          <a href="#projekty">Projekty</a>
+          <a href="#blog">Blog</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main>
+      <!-- ========== O MNIE: zmień teksty na swoje ========== -->
+      <section id="o-mnie">
+        <h2>O mnie</h2>
+        <p class="lead">Studiuję gospodarkę cyfrową na Uniwersytecie Ekonomicznym w Katowicach.</p>
+        <p>Napisz tu 2–3 zdania o sobie: czym się zajmujesz, gdzie pracujesz, co Cię interesuje.</p>
+      </section>
+
+      <!-- ========== PROJEKTY: zmień, dodaj albo usuń projekty ========== -->
+      <section id="projekty">
+        <h2>Projekty</h2>
+        <div class="project">
+          <h3>Nazwa projektu 1</h3>
+          <p>Jedno, dwa zdania: co zrobiłeś i jaki był efekt.</p>
+        </div>
+        <div class="project">
+          <h3>Nazwa projektu 2</h3>
+          <p>Projekt ze studiów, z pracy albo z hobby.</p>
+        </div>
+        <div class="project">
+          <h3>Nazwa projektu 3</h3>
+          <p>Liczby działają najlepiej: ile, jak szybko, dla kogo.</p>
+        </div>
+      </section>
+
+      <!-- ========== BLOG: wpisy dodajesz w tablicy posts na dole pliku ========== -->
+      <section id="blog">
+        <h2>Blog</h2>
+        <div id="posts"></div>
+      </section>
+
+      <footer>Strona hostowana w chmurze.</footer>
+    </main>
+  </div>
+
+  <script>
+    // =====================================================================
+    // WPISY NA BLOGU
+    // Każdy wpis to jeden obiekt { data, tytul, tresc, obraz }.
+    // - data:  w formacie RRRR-MM-DD, wpisy same ułożą się od najnowszego
+    // - tresc: akapity oddzielaj pustą linią (\n\n)
+    // - obraz: nazwa pliku zrzutu ekranu w tym samym folderze (albo "" jeśli brak)
+    // Nowy wpis: skopiuj cały obiekt, wklej po przecinku i zmień treść.
+    // =====================================================================
+    const posts = [
+      {
+        data: "2026-10-04",
+        tytul: "Zajęcia 1: wizytówka w chmurze",
+        tresc: "Co zrobiłem: opisz własnymi słowami, w 2–3 zdaniach.\n\nIle to trwało: od założenia konta do publikacji strony minęło X minut.\n\nCo nie zadziałało: opisz, co poszło nie tak za pierwszym razem i jak to naprawiłeś.",
+        obraz: "zajecia1.png"
+      }
+    ];
+
+    // Poniżej nic nie musisz zmieniać.
+    const container = document.getElementById("posts");
+    posts
+      .slice()
+      .sort((a, b) => b.data.localeCompare(a.data))
+      .forEach((post) => {
+        const article = document.createElement("article");
+        article.className = "post";
+
+        const time = document.createElement("time");
+        time.textContent = post.data;
+        article.appendChild(time);
+
+        const h3 = document.createElement("h3");
+        h3.textContent = post.tytul;
+        article.appendChild(h3);
+
+        post.tresc.split(/\n\s*\n/).forEach((paragraph) => {
+          const p = document.createElement("p");
+          p.textContent = paragraph.trim();
+          article.appendChild(p);
+        });
+
+        if (post.obraz) {
+          const img = document.createElement("img");
+          img.src = post.obraz;
+          img.alt = "Zrzut ekranu: " + post.tytul;
+          img.onerror = () => img.remove();
+          article.appendChild(img);
+        }
+
+        container.appendChild(article);
+      });
+  </script>
+</body>
+</html>

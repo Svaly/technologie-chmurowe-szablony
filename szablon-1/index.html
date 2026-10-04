@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Szablon 1: Klasyczny · Technologie chmurowe</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="back" href="../">← Wszystkie szablony</a>
+      <p class="kicker">Szablon 1</p>
+      <h1>Klasyczny</h1>
+      <p class="sub">Jasny i prosty szablon. Sam przełącza się na ciemny, gdy telefon albo komputer ma tryb ciemny.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="actions">
+      <a class="btn primary" href="wizytowka/index.html" download="index.html">Pobierz index.html</a>
+      <a class="btn" href="wizytowka/" target="_blank" rel="noopener">Otwórz w nowej karcie</a>
+      <div class="toggle" role="group" aria-label="Rozmiar podglądu">
+        <button type="button" data-size="desktop" aria-pressed="true">Komputer</button>
+        <button type="button" data-size="phone" aria-pressed="false">Telefon</button>
+      </div>
+    </div>
+
+    <div class="frame" id="frame">
+      <iframe src="wizytowka/" title="Podgląd szablonu 1: Klasyczny"></iframe>
+    </div>
+
+    <p class="hint">Zapisz plik w folderze <code>wizytowka</code> na pulpicie. Jeśli przeglądarka zamiast pobrać plik pokaże kod, naciśnij Ctrl+S i zapisz go jako <code>index.html</code>. Obrazek we wpisie to przykład: wstaw w to miejsce swój zrzut ekranu <code>zajecia1.png</code>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap">Technologie chmurowe · materiały do laboratorium</div>
+  </footer>
+
+  <script>
+    const frame = document.getElementById("frame");
+    document.querySelectorAll(".toggle button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".toggle button").forEach((b) => b.setAttribute("aria-pressed", "false"));
+        btn.setAttribute("aria-pressed", "true");
+        frame.classList.toggle("phone", btn.dataset.size === "phone");
+      });
+    });
+  </script>
+</body>
+</html>
