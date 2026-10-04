@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Jeśli nie chcesz, żeby Google znalazł Twoją stronę, zostaw poniższą linię. Jeśli chcesz, usuń ją. -->
+  <meta name="robots" content="noindex">
+  <title>Imię Nazwisko · wizytówka</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --panel: #131a26;
+      --text: #e9edf5;
+      --muted: #9aa5b8;
+      --accent: #ffb347;
+      --accent2: #ff6f61;
+      --line: #232c3b;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Verdana, Geneva, "DejaVu Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: var(--accent); }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11, 15, 23, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; align-items: center; gap: 8px; height: 60px; }
+    nav .logo { margin-right: auto; font-weight: bold; color: var(--text); text-decoration: none; }
+    nav a.pill {
+      color: var(--muted); text-decoration: none; font-size: 0.9rem;
+      padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line);
+    }
+    nav a.pill:hover { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+
+    header.hero { padding: 96px 0 72px; }
+    .hello { color: var(--accent); font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 12px; }
+    .hero h1 {
+      font-size: 3rem; line-height: 1.15; margin: 0 0 20px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 620px; margin: 0 0 12px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .tags span { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 4px 12px; font-size: 0.85rem; color: var(--muted); }
+
+    section { padding: 64px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 1.7rem; margin: 0 0 28px; }
+    h2::before { content: "// "; color: var(--accent); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+    .card {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+      padding: 22px; border-top: 3px solid var(--accent);
+      transition: transform 0.15s ease;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card h3 { margin: 0 0 8px; }
+    .card p { margin: 0; color: var(--muted); }
+
+    /* Blog jako oś czasu */
+    #posts { border-left: 2px solid var(--line); margin-left: 8px; }
+    .post { position: relative; padding: 0 0 36px 28px; }
+    .post::before {
+      content: ""; position: absolute; left: -9px; top: 6px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent); box-shadow: 0 0 0 4px var(--bg);
+    }
+    .post time { color: var(--accent); font-size: 0.85rem; }
+    .post h3 { margin: 4px 0 0; font-size: 1.25rem; }
+    .post p { margin: 12px 0 0; color: #cfd6e3; }
+    .post img { display: block; max-width: 100%; margin-top: 16px; border-radius: 10px; border: 1px solid var(--line); }
+
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); }
+
+    @media (max-width: 560px) {
+      .hero h1 { font-size: 2.2rem; }
+      header.hero { padding: 56px 0 40px; }
+      nav a.pill { padding: 5px 10px; font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="#o-mnie">IN</a>
+      <a class="pill" href="#projekty">Projekty</a>
+      <a class="pill" href="#blog">Blog</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <!-- ========== O MNIE: zmień teksty na swoje ========== -->
+    <header class="hero" id="o-mnie">
+      <p class="hello">Cześć, jestem</p>
+      <h1>Imię Nazwisko</h1>
+      <p>Studiuję gospodarkę cyfrową na Uniwersytecie Ekonomicznym w Katowicach.</p>
+      <p>Napisz tu 2–3 zdania o sobie: czym się zajmujesz, gdzie pracujesz, co Cię interesuje.</p>
+      <div class="tags">
+        <span>marketing</span>
+        <span>analiza danych</span>
+        <span>e-commerce</span>
+      </div>
+    </header>
+
+    <!-- ========== PROJEKTY: zmień, dodaj albo usuń karty ========== -->
+    <section id="projekty">
+      <h2>Projekty</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Nazwa projektu 1</h3>
+          <p>Jedno, dwa zdania: co zrobiłeś i jaki był efekt.</p>
+        </div>
+        <div class="card">
+          <h3>Nazwa projektu 2</h3>
+          <p>Projekt ze studiów, z pracy albo z hobby.</p>
+        </div>
+        <div class="card">
+          <h3>Nazwa projektu 3</h3>
+          <p>Liczby działają najlepiej: ile, jak szybko, dla kogo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== BLOG: wpisy dodajesz w tablicy posts na dole pliku ========== -->
+    <section id="blog">
+      <h2>Blog</h2>
+      <div id="posts"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Strona hostowana w chmurze.</div>
+  </footer>
+
+  <script>
+    // =====================================================================
+    // WPISY NA BLOGU
+    // Każdy wpis to jeden obiekt { data, tytul, tresc, obraz }.
+    // - data:  w formacie RRRR-MM-DD, wpisy same ułożą się od najnowszego
+    // - tresc: akapity oddzielaj pustą linią (\n\n)
+    // - obraz: nazwa pliku zrzutu ekranu w tym samym folderze (albo "" jeśli brak)
+    // Nowy wpis: skopiuj cały obiekt, wklej po przecinku i zmień treść.
+    // =====================================================================
+    const posts = [
+      {
+        data: "2026-10-04",
+        tytul: "Zajęcia 1: wizytówka w chmurze",
+        tresc: "Co zrobiłem: opisz własnymi słowami, w 2–3 zdaniach.\n\nIle to trwało: od założenia konta do publikacji strony minęło X minut.\n\nCo nie zadziałało: opisz, co poszło nie tak za pierwszym razem i jak to naprawiłeś.",
+        obraz: "zajecia1.png"
+      }
+    ];
+
+    // Poniżej nic nie musisz zmieniać.
+    const container = document.getElementById("posts");
+    posts
+      .slice()
+      .sort((a, b) => b.data.localeCompare(a.data))
+      .forEach((post) => {
+        const article = document.createElement("article");
+        article.className = "post";
+
+        const time = document.createElement("time");
+        time.textContent = post.data;
+        article.appendChild(time);
+
+        const h3 = document.createElement("h3");
+        h3.textContent = post.tytul;
+        article.appendChild(h3);
+
+        post.tresc.split(/\n\s*\n/).forEach((paragraph) => {
+          const p = document.createElement("p");
+          p.textContent = paragraph.trim();
+          article.appendChild(p);
+        });
+
+        if (post.obraz) {
+          const img = document.createElement("img");
+          img.src = post.obraz;
+          img.alt = "Zrzut ekranu: " + post.tytul;
+          img.onerror = () => img.remove();
+          article.appendChild(img);
+        }
+
+        container.appendChild(article);
+      });
+  </script>
+</body>
+</html>
